@@ -17,7 +17,7 @@
             text-align: center;
         }
         h1 { color: #d63384; margin-bottom: 20px; }
-        .buttons { display: flex; gap: 20px; position: relative; }
+        .buttons { display: flex; gap: 20px; justify-content: center; }
         button {
             padding: 15px 30px;
             font-size: 1.2rem;
@@ -27,7 +27,7 @@
             transition: transform 0.2s;
         }
         #yesBtn { background-color: #ff4d6d; color: white; }
-        #noBtn { background-color: #adb5bd; color: white; position: absolute; left: 120px; }
+        #noBtn { background-color: #adb5bd; color: white; }
         #customQuestion { margin-top: 30px; color: #555; font-style: italic; }
         .hidden { display: none; }
         .success-msg { font-size: 2rem; color: #d63384; }
@@ -37,7 +37,7 @@
 
     <div id="quiz">
         <h1>Zostaniesz moją Walentynką? ❤️</h1>
-        <p id="customQuestion"> I pojdziemy na sushi</p>
+        <p id="customQuestion">I pojdziemy na sushi 🍣</p>
         
         <div class="buttons">
             <button id="yesBtn">TAK!</button>
@@ -47,36 +47,20 @@
 
     <div id="celebration" class="hidden">
         <h1 class="success-msg">Nice</h1>
-        <p>Daddy wiedział</p>
+        <p>Daddy wiedział ❤️</p>
     </div>
 
-<script>
+    <script>
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
         const quiz = document.getElementById('quiz');
         const celebration = document.getElementById('celebration');
 
-        // Funkcja "Ty draniu"
-        function trollUser() {
+        // Kliknięcie "Nie" - wyłącza ruch, odpala okienka
+        noBtn.addEventListener('click', () => {
             for (let i = 0; i < 5; i++) {
                 alert("Ty draniu!");
             }
-        }
-
-        // Uciekający przycisk "Nie" + Atak okienkami
-        noBtn.addEventListener('mouseover', () => {
-            // Przycisk ucieka
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-            
-            noBtn.style.position = 'fixed';
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
-        });
-
-        // Dodatkowa blokada - jeśli jednak uda się kliknąć "Nie"
-        noBtn.addEventListener('click', () => {
-            trollUser();
         });
 
         // Kliknięcie "Tak"
