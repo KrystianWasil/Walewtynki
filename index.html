@@ -50,20 +50,33 @@
         <p>Daddy wiedział</p>
     </div>
 
-    <script>
+<script>
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
         const quiz = document.getElementById('quiz');
         const celebration = document.getElementById('celebration');
 
-        // Uciekający przycisk "Nie"
+        // Funkcja "Ty draniu"
+        function trollUser() {
+            for (let i = 0; i < 5; i++) {
+                alert("Ty draniu!");
+            }
+        }
+
+        // Uciekający przycisk "Nie" + Atak okienkami
         noBtn.addEventListener('mouseover', () => {
+            // Przycisk ucieka
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
             const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
             
             noBtn.style.position = 'fixed';
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
+        });
+
+        // Dodatkowa blokada - jeśli jednak uda się kliknąć "Nie"
+        noBtn.addEventListener('click', () => {
+            trollUser();
         });
 
         // Kliknięcie "Tak"
