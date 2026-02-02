@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ważne pytanie! ❤️</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe6e6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+        h1 { color: #d63384; margin-bottom: 20px; }
+        .buttons { display: flex; gap: 20px; position: relative; }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        #yesBtn { background-color: #ff4d6d; color: white; }
+        #noBtn { background-color: #adb5bd; color: white; position: absolute; left: 120px; }
+        #customQuestion { margin-top: 30px; color: #555; font-style: italic; }
+        .hidden { display: none; }
+        .success-msg { font-size: 2rem; color: #d63384; }
+    </style>
+</head>
+<body>
+
+    <div id="quiz">
+        <h1>Zostaniesz moją Walentynką? ❤️</h1>
+        <p id="customQuestion">I czy pójdziesz ze mną na najlepszą pizzę w mieście? 🍕</p>
+        
+        <div class="buttons">
+            <button id="yesBtn">TAK!</button>
+            <button id="noBtn">Nie</button>
+        </div>
+    </div>
+
+    <div id="celebration" class="hidden">
+        <h1 class="success-msg">Jej! Wiedziałem! ❤️🎉</h1>
+        <p>Do zobaczenia 14 lutego!</p>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const quiz = document.getElementById('quiz');
+        const celebration = document.getElementById('celebration');
+
+        // Uciekający przycisk "Nie"
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        });
+
+        // Kliknięcie "Tak"
+        yesBtn.addEventListener('click', () => {
+            quiz.classList.add('hidden');
+            celebration.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
